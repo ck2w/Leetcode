@@ -14,9 +14,6 @@
 #
 #
 # 2 hashtable (60ms)
-# avoid repeated combination (dictionary in python)
-# ref:
-# https://zhuanlan.zhihu.com/p/28947993
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
