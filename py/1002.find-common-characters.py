@@ -50,28 +50,42 @@
 # 
 # 
 # 
-#
+# 1 orderded dictionary (52 ms)
+# class Solution:
+#     def commonChars(self, A: List[str]) -> List[str]:
+#         from collections import OrderedDict
+#         d = OrderedDict()
+#         for letter in A[0]:
+#             if letter in d:
+#                 d[letter] += 1
+#             else:
+#                 d[letter] = 1        
+
+#         for i in A[1:]:
+#             new_d = {}
+#             for letter in i:
+#                 if letter in d:
+#                     if letter in new_d:
+#                         new_d[letter] += 1
+#                     else:
+#                         new_d[letter] = 1
+#             for key in list(d.keys()):
+#                 if key in new_d:
+#                     d[key] = min(d[key], new_d[key])
+#                 else:
+#                     del d[key]            
+#         result = []
+#         for key, value in d.items():
+#             result.extend([key]*value)
+#         return result
+
+
+# 2 Counter (56 ms)
 class Solution:
     def commonChars(self, A: List[str]) -> List[str]:
-        d = {}
-        for letter in A[0]:
-            if letter in d:
-                d[letter] += 1
-            else:
-                d[letter] = 1
-        print(d)
-        for i in A[1:]:
-            new_d = {}
-            for letter in i:
-                if letter in d:
-                    if letter in new_d:
-                        new_d[letter] += 1
-                    else:
-                        new_d[letter] = 1
-            d = new_d
-            print(d)
-        result = []
-        for key, value in d.items():
-            result.extend([key]*value)
-        return result
+        from collections import Counter
+        res = Counter(A[0])
+        for a in A:
+            res &= Counter(a)
+        return list(res.elements())
 
