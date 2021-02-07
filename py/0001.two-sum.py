@@ -33,10 +33,11 @@
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        d = {}
-        for i in range(len(nums)):
-            if not nums[i] in d:                
-                d[nums[i]] = i
-            if target - nums[i] in d and d[target - nums[i]] < i:                    
-                return [d[target - nums[i]], i]
+        h = {}
+        for i, num in enumerate(nums):
+            n = target - num
+            if n not in h:
+                h[num] = i
+            else:
+                return [h[n], i]
 
