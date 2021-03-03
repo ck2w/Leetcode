@@ -62,18 +62,12 @@
 # unordered list
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
-        temp_set = {}
-        cur = head
-        while cur:
-            temp_set[cur.val] = cur.val
-            cur = cur.next
-        
-        dummy = ListNode(0)
-        pre = dummy
-        for item in temp_set:
-            pre.next = ListNode(item)
-            pre = pre.next
-        
-        return dummy.next
+        curr = head
+        while curr:
+            if curr.next and curr.val == curr.next.val:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+        return head
 # @lc code=end
 

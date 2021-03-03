@@ -19,7 +19,7 @@
 # Because nums[0] + nums[1] = 2 + 7 = 9,
 # return [0, 1].
 #
-# 1 brute force (5248ms)
+# 1 brute force, O(n^2) (5248ms)
 # loop possible combinations
 # class Solution:
 #     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -29,8 +29,7 @@
 #                     return [i, j]   
 #
 #
-# 2 hashtable (60ms)
-
+# 2 hashtable, O(n) (60ms)
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         h = {}
@@ -40,4 +39,7 @@ class Solution:
                 h[num] = i
             else:
                 return [h[n], i]
+
+# note:
+# https://zhuanlan.zhihu.com/p/28947993
 

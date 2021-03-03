@@ -6,42 +6,44 @@
 # https://leetcode.com/problems/reverse-integer/description/
 #
 # algorithms
-# Easy (25.12%)
-# Total Accepted:    618K
-# Total Submissions: 2.5M
+# Easy (25.91%)
+# Likes:    4380
+# Dislikes: 6763
+# Total Accepted:    1.4M
+# Total Submissions: 5.5M
 # Testcase Example:  '123'
 #
-# Given a 32-bit signed integer, reverse digits of an integer.
+# Given a signed 32-bit integer x, return x with its digits reversed. If
+# reversing x causes the value to go outside the signed 32-bit integer range
+# [-2^31, 2^31 - 1], then return 0.
+# 
+# Assume the environment does not allow you to store 64-bit integers (signed or
+# unsigned).
+# 
 # 
 # Example 1:
-# 
-# 
-# Input: 123
+# Input: x = 123
 # Output: 321
-# 
-# 
 # Example 2:
-# 
-# 
-# Input: -123
+# Input: x = -123
 # Output: -321
-# 
-# 
 # Example 3:
-# 
-# 
-# Input: 120
+# Input: x = 120
 # Output: 21
+# Example 4:
+# Input: x = 0
+# Output: 0
 # 
 # 
-# Note:
-# Assume we are dealing with an environment which could only store integers
-# within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of
-# this problem, assume that your function returns 0 when the reversed integer
-# overflows.
+# Constraints:
+# 
+# 
+# -2^31 <= x <= 2^31 - 1
+# 
 # 
 #
-# 1 python str iterate
+
+# @lc code=start
 class Solution:
     def reverse(self, x: int) -> int:
         if x < 0:
@@ -54,3 +56,5 @@ class Solution:
             return 0
         else:
             return y
+# @lc code=end
+
