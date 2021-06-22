@@ -74,7 +74,7 @@ class Solution:
                 row -= 1
             elif matrix[row][col] < target:
                 col += 1
-            else: # found it
+            else:
                 return True
         
         return False

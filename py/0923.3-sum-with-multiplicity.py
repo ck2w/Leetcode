@@ -67,6 +67,7 @@ class Solution:
         # assume: x<=y<=z
 
         # All different
+        # x<y<z
         for x in range(0, 101):
             for y in range(x+1, 101):
                 z = target - x - y

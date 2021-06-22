@@ -95,54 +95,58 @@ class Node:
 """
 
 # Time: O(N), Space: O(1)
-class Solution:
-    def copyRandomList(self, head: 'Node') -> 'Node':
-        if not head:
-            return None
+# class Solution:
+#     def copyRandomList(self, head: 'Node') -> 'Node':
+#         # list len=0
+#         if not head:
+#             return None
         
-        if not head.next:
-            new_head = Node(x=head.val)
-            if head.random:
-                new_head.random = new_head
-            return new_head
+#         # list len=1
+#         if not head.next:
+#             new_head = Node(x=head.val)
+#             if head.random:
+#                 new_head.random = new_head
+#             return new_head
 
-        curr = head
-        # create and merge copy list
-        while curr:
-            new_node = Node(x=curr.val)            
-            new_node.next = curr.next
-            curr.next = new_node
-            curr = new_node.next            
+#         curr = head
+#         # create and merge copy list
+#         while curr:
+#             new_node = Node(x=curr.val)            
+#             new_node.next = curr.next
+#             curr.next = new_node
+#             curr = new_node.next            
 
-        # copy random pointer
-        curr = head
-        while curr:            
-            if curr.random:
-                curr.next.random = curr.random.next            
-            curr = curr.next.next
+#         # copy random pointer
+#         curr = head
+#         while curr:            
+#             if curr.random:
+#                 curr.next.random = curr.random.next            
+#             curr = curr.next.next
 
-        # seperate copy list
-        new_head = head.next
-        curr = new_head
-        while curr:
-            curr.next = curr.next.next
-            if curr.next.next:
-                curr = curr.next
-            else:
-                break
-        return new_head
+#         # seperate copy list
+#         new_head = head.next
+#         curr = new_head
+#         while curr:
+#             curr.next = curr.next.next
+#             if curr.next.next:
+#                 curr = curr.next
+#             else:
+#                 break
+#         return new_head
 
 # Time: O(n)
 # visited_nodes: 
-# key: old node, value: new node
+# # key: old node, value: new node
 class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
         visited_nodes = {}
 
         def build_list(node: Node) -> Node:
-            if not node: return None
+            if not node: 
+                return None
             nonlocal visited_nodes
-            if node in visited_nodes: return visited_nodes[node]
+            if node in visited_nodes: 
+                return visited_nodes[node]
             visited_nodes[node] = Node(x=node.val)
             visited_nodes[node].next = build_list(node.next)
             visited_nodes[node].random = build_list(node.random)

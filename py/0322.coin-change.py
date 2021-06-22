@@ -80,7 +80,7 @@ class Solution:
                 dp[coin] = 1
         
         for i in range(1, amount+1):
-            lst = [dp[i-coin]+1 for coin in coins if i-coin >=0]            
+            lst = [dp[i-coin]+1 for coin in coins if i>=coin]            
             if lst:
                 dp[i] = min(lst)
         if dp[amount] == float('inf'):

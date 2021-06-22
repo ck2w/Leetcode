@@ -72,15 +72,15 @@
 #         self.val = x
 #         self.next = None
 # 1: set
-# class Solution:
-#     def hasCycle(self, head: ListNode) -> bool:
-#         s = set()
-#         while head:
-#             if head in s:
-#                 return True
-#             s.add(head)
-#             head = head.next
-#         return False
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        s = set()
+        while head:
+            if head in s:
+                return True
+            s.add(head)
+            head = head.next
+        return False
 
 # 2: Floyd's tor and hare
 class Solution:

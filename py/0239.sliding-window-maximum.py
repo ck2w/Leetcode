@@ -83,6 +83,7 @@ class Solution:
         
         from collections import deque
 
+        # queue to save locs
         q = deque()
 
         if len(nums) * k == 0:

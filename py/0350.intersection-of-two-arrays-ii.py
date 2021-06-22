@@ -57,10 +57,6 @@ class Solution:
         from collections import Counter
         c1 = Counter(nums1)
         c2 = Counter(nums2)
-        result = []
-        for key, value in c1.items():
-            if key in c2:
-                result.extend([key] * min(c1[key], c2[key]))
-        return result
+        return sum([[key] * value for key, value in (c1 & c2).items()], [])
 # @lc code=end
 

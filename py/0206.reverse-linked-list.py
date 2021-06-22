@@ -58,18 +58,30 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+# class Solution:
+#     def reverseList(self, head: ListNode) -> ListNode:
+#         rever_tail = ListNode()
+#         curr = rever_tail
+#         while head != None:
+#             curr.val = head.val
+#             new_node = ListNode()
+#             new_node.next = curr
+#             curr = new_node
+#             head = head.next
+#         return curr.next
+
+
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        rever_tail = ListNode()
-        curr = rever_tail
-        while head != None:
-            curr.val = head.val
-            new_node = ListNode()
-            new_node.next = curr
-            curr = new_node
-            head = head.next
-        return curr.next
-
+        prev = None
+        curr = head
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        return prev
         
 # @lc code=end
 
