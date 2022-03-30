@@ -20,7 +20,17 @@ def kth2(arr1, arr2, m, n, k):
 
 
 # 3. divide and conquer, time: O(logn+logm)
-def kth3(arr1, arr2, m, n, k):     
+def kth3(arr1, arr2, m, n, k):
+    # if k > len(lst1) + len(lst2) or k < 1:
+    #     return None
+    
+    # if (k == 1):
+    #     if(arr1[st1] < arr2[st2]):
+    #         return arr1[st1]
+    #     else:
+    #         return arr2[st2]
+
+
     if n == 1 or m == 1:
         if m == 1:
             arr2, arr1 = arr1, arr2

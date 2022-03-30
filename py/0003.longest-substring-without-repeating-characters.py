@@ -85,20 +85,26 @@ class Solution:
 
 
     def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        
         n = len(s)
-        ans = 0
-        # mp stores the current index of a character
-        mp = {}
-
+        
         i = 0
-        # try to extend the range [i, j]
-        for j in range(n):
-            if s[j] in mp:
-                i = max(mp[s[j]], i)
-
-            ans = max(ans, j - i + 1)
-            mp[s[j]] = j + 1
-
-        return ans
+        d = {}
+        max_len = 0
+        
+        for j in range(n):            
+            if s[j] not in d:
+                # new element, update j
+                d[s[j]] = j
+            else:
+                # old element, update i by 1 step; i never back roll
+                i = max(i, d[s[j]] + 1)
+                d[s[j]] = j                
+                
+            max_len = max(max_len, j - i + 1)
+        return max_len
+                
 # @lc code=end
 

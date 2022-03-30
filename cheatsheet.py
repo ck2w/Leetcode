@@ -1,3 +1,19 @@
+
+# list
+sum([[2,3], [1,2]], []) # flatten [2,3,1,2]
+
+
+# set
+a = set([2,4])
+a.add(3)
+a.remove(4)
+
+a & b  # intersection
+a.intersection(b)  # intersection
+a | b  # union
+a.union(b)  # union
+
+
 # heapq
 import heapq
 
@@ -7,6 +23,7 @@ heapq.nlargest(k, c.keys(), key=c.get)
 heapq.nsmallest(k, c.keys(), key=c.get)
 heapq.heappush(maxheap, [distance, point])
 heapq.heappop(maxheap)
+
 
 # Counter
 from collections import Counter
@@ -28,6 +45,7 @@ q = Queue()
 q.put(i)
 q.get(i)
 
+
 # deque
 from collections import deque
 
@@ -38,8 +56,6 @@ q.pop()
 q.popleft()
 q.extend([1,2,3])
 q.extendleft([1,2,3])
-
-
 
 
 
@@ -63,7 +79,29 @@ def topKFrequent(self, nums: List[int], k: int) -> List[int]:
     return heapq.nlargest(k, c.keys(), key=c.get)
 
 
-def binarySearch(self, nums):
+# binary search
+def binarySearch(nums, target):
+    # find val (whatever first/last)
+    if len(nums) == 0:
+        return -1
+
+    low, hi = 0, len(nums) - 1
+    while low <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    # End Condition: left > right
+    return -1 # exact solution
+    return hi # floor solution
+    return lo # ceil solution
+
+def binarySearch(nums, target):
+    # find first (vals duplicate)
     lo = 0
     hi = len(nums)
     while lo < hi:
@@ -76,6 +114,22 @@ def binarySearch(self, nums):
         return -1
     else:
         return lo
+
+def binarySearch(nums, target):
+    # find last
+    lo = 0
+    hi = len(nums)
+    while lo < hi:
+        mid = (hi + lo) // 2
+        if nums[mid] > target:
+            hi = mid - 1
+        else:
+            lo = mid
+    if lo == len(nums) or nums[lo] != target :
+        return -1
+    else:
+        return lo
+
 
 
 def maxSubArray(self, nums: List[int]) -> int:
@@ -178,6 +232,7 @@ class Codec:
 
 
 # binary tree traversal
+# inorder: left->node->right, dfs
 
 def preorderTraversal(self, root):
     if root is None:
@@ -209,7 +264,7 @@ def preorderTraversal(self, root: TreeNode) -> List[int]:
                 stack.append((node, True))
     return res
 
- def inorderTraversal(self, root: TreeNode) -> List[int]:
+def inorderTraversal(self, root: TreeNode) -> List[int]:
     res, stack = [], [(root, False)]
     while stack:
         node, visited = stack.pop()  # the last element
@@ -221,6 +276,10 @@ def preorderTraversal(self, root: TreeNode) -> List[int]:
                 stack.append((node, True))
                 stack.append((node.left, False))
     return res
+
+def inorder(self, r: TreeNode):
+    return self.inorder(r.left) + [r.val] + self.inorder(r.right) if r else []
+        
 
 def postorderTraversal(self, root: TreeNode) -> List[int]:
     res, stack = [], [(root, False)]
@@ -256,3 +315,37 @@ def levelOrder(self, root):
         
     helper(root, 0)
     return levels
+
+
+# bfs-graph
+from collections import deque
+def bsf_graph(root):
+    if not root:
+        return
+    queue = deque([root])    
+    visited = set([root])
+    while queue:
+        node = queue.popleft()
+        # do somethings with the head node or neighbors
+        for neighbor in node.neighbors:
+            if neighbor not in visited:
+                queue.append(neighbor)
+                visited.add(neighbor)
+    return xxx
+
+# dfs-graph
+def dfs_graph(root):
+    if not root:
+        return
+    stack = [root]
+    visited = set([root])
+    while stack:
+        node = stack.pop()
+        # do somethings with the head node or neighbors
+        for neighbor in node.neighbors:
+            if neighbor not in visited:
+                stack.append(neighbor)
+                visited.add(neighbor)
+    return xxx
+
+

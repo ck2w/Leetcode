@@ -36,10 +36,22 @@
 # 
 # 
 #
-# 1 direct solve (56ms)
+# 1 binary search
 # class Solution:
 #     def mySqrt(self, x: int) -> int:
-#         return int(x ** 0.5)
+#         if x < 2: 
+#             return x
+#         lo = 0
+#         hi = x // 2  
+#         while lo <= hi:
+#             mid = (lo + hi) // 2
+#             if mid**2 == x:
+#                 return mid
+#             elif mid**2 < x:
+#                 lo = mid + 1
+#             else:
+#                 hi = mid - 1
+#         return hi
 
 # 2 newton's method (80ms)
 class Solution:

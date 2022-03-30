@@ -53,16 +53,28 @@
 #
 
 # @lc code=start
+# brute force
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_subarray = -math.inf
+        for i in range(len(nums)):
+            current_subarray = 0
+            for j in range(i, len(nums)):
+                current_subarray += nums[j]
+                max_subarray = max(max_subarray, current_subarray)
+        
+        return max_subarray
+
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         # Kadane's Algorithm
         # Initialize our variables using the first element.
         current_subarray = max_subarray = nums[0]
+        # current_subarray[j]: subarray with the largest sum ending at j, dp part
         
-        # Start with the 2nd element since we already used the first one.
         for curr in nums[1:]:
-            # If current_subarray is negative, throw it away. Otherwise, keep adding to it.
-            # two rolling max
+            # If current_subarray is negative, throw it away. 
+            # Otherwise, keep adding to it.
             current_subarray = max(curr, current_subarray + curr)
             max_subarray = max(max_subarray, current_subarray)
         
