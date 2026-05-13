@@ -1,4 +1,12 @@
 
+# 
+curr = list1 or list2
+##  equivalent to
+if list1:
+    curr = list1
+else:
+    curr = list2
+
 # list
 sum([[2,3], [1,2]], []) # flatten [2,3,1,2]
 
@@ -59,6 +67,7 @@ q.extendleft([1,2,3])
 
 
 
+# reverseList 1
 def reverseList(head: ListNode) -> ListNode:
     prev = None
     curr = head
@@ -68,6 +77,17 @@ def reverseList(head: ListNode) -> ListNode:
         prev = curr
         curr = next
     return prev
+
+# reverseList 2
+def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    return self.reverse(head, None)
+
+def reverse(self, cur: ListNode, pre: ListNode) -> ListNode:
+    if cur == None:
+        return pre
+    temp = cur.next
+    cur.next = pre
+    return self.reverse(temp, cur)
 
 
 def topKFrequent(self, nums: List[int], k: int) -> List[int]:
