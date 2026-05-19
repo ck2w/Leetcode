@@ -11,6 +11,27 @@ else:
 sum([[2,3], [1,2]], []) # flatten [2,3,1,2]
 
 
+# char
+c.isalnum()
+c.isalpha()
+c.isdigit()
+c.islower()
+c.isupper()
+c.isspace()
+s.lower()
+s.upper()
+"hello".capitalize()  # Hello
+"hello world".title()  # Hello World
+"HeLLo".swapcase()  # "hEllO"
+s.strip()   # remove space
+s.lstrip()
+s.rstrip()
+s.startswith("abc")
+s.endswith("xyz")
+s.count("a")
+"-".join(sorted(s))
+"hello".find("e")  # 1
+
 # set
 a = set([2,4])
 a.add(3)
@@ -81,7 +102,6 @@ def reverseList(head: ListNode) -> ListNode:
 # reverseList 2
 def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
     return self.reverse(head, None)
-
 def reverse(self, cur: ListNode, pre: ListNode) -> ListNode:
     if cur == None:
         return pre
@@ -351,6 +371,7 @@ def bsf_graph(root):
             if neighbor not in visited:
                 queue.append(neighbor)
                 visited.add(neighbor)
+                # do something for neighbor
     return xxx
 
 # dfs-graph
@@ -366,6 +387,21 @@ def dfs_graph(root):
             if neighbor not in visited:
                 stack.append(neighbor)
                 visited.add(neighbor)
+                # do something for neighbor
     return xxx
 
 
+# recursive
+def dfs_graph(root, visited=None):
+    if not root:
+        return
+    if visited is None:
+        visited = set()
+    
+    visited.add(root)
+    # 处理当前节点
+    print(root.val)
+    
+    for neighbor in root.neighbors:
+        if neighbor not in visited:
+            dfs_graph(neighbor, visited)
