@@ -99,7 +99,7 @@ def reverseList(head: ListNode) -> ListNode:
         curr = next
     return prev
 
-# reverseList 2
+# reverseList 2, recursive
 def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
     return self.reverse(head, None)
 def reverse(self, cur: ListNode, pre: ListNode) -> ListNode:

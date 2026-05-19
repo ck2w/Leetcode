@@ -19,7 +19,7 @@ def knapsack(items: list[Item], W: int) -> tuple[int, list[str]]:
             if w >= wt:
                 # // 不选物品 i: dp[i][w] = dp[i-1][w]
                 # // 选物品 i（前提：w >= wt[i]）: dp[i][w] = dp[i-1][w - wt[i]] + val[i]
-                dp[i][w] = max(dp[i][w], dp[i - 1][w - wt] + val)
+                dp[i][w] = max(dp[i][w], dp[i-1][w-wt] + val)
 
     # 回溯
     selected, w = [], W
